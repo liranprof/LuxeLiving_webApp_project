@@ -1,0 +1,77 @@
+///////////////////admin_page//////////////////////////////////
+
+////////title///// admin_page
+graphic top justify frame (green)
+{
+////////title///// welcome admin_name
+//logo+ slogan//logo top_left//slogan bottom to logo
+    //welcome_title//middle top
+//search box+button+extended_options// onclick show result on products list
+}
+
+///////body /////user_detail_page
+{
+//menu_title stay item_list feed on menu_title
+//menu left side justify
+//roller view change by page change
+//each menu view item list of {
+//welcome_page/about_page/terms_page/admin_detail_page/
+///products_catalog/suppliers_catalog/users_catalog/carts/financial_page} 
+//onclick financial_page=>
+//onclick welcome_page=>
+//onclick about_page=>
+//onclick terms_page=>
+//onclick admin_detail_page=>
+
+//graphic top justify frame (light green){
+//onclick products_catalog=>products_list 
+//only if in products_catalog new menu products_financial
+}
+//graphic top justify frame (light gray){
+//onclick suppliers_catalog=>product_list=>suppliers_list
+//only if in suppliers_catalog new menu suppliers_financial
+}
+//graphic top justify frame (metal blue){
+//onclick users_catalog=>product_list=>users_list
+//only if in users_catalog new menu users_financial
+}  
+//graphic top justify frame (light orange){
+//onclick carts=>product_list=>carts_products_list} 
+//only if in carts new menu carts_financial
+{ 
+
+////item_list//////////////////
+//item_list roller view list centered
+//each item inside card view 
+//item_card view justify to up left corner
+
+
+////item_card view///// {
+    //on top item_img
+   
+    //on top right area //on item_img {
+        //on_mouse_above=>change x highlight in red 
+        //delete_button if onclick =>transparent
+        //onclick again disable delete select
+    }
+
+    //on bottom item data fill(if){
+        item_card_information 
+        if(=>products) name+type+(consumer price+discount(if))+rank if not 0
+        if(=>suppliers)name+products_amount
+        if(=>users)name+email+total_carts_price
+        if(=>carts)user_email+price+purchased_valid
+        
+    }
+//onclick item card=>item_full_information_page//by item
+}
+admin_page_information
+if(=>products) total_products + total_for_delete
+if(=>suppliers) total_suppliers + total_for_delete
+if(=>users) total_users + total_carts_price + total_for_delete
+if(=>carts)user_email+price+purchased_valid + total_for_delete
+
+//on item_card view (delete_button if onclick...)
+onclick button_approve=>popup if you sure?=>yes(delete form DB)||no(show only)
+onclick button_decline=>disable all deletion mark
+
