@@ -1,64 +1,83 @@
-const app = require('./loaders/Express')
-const { cart } = require('./models/cart'); 
-const { client } = require('./models/client');  
-const { password } = require('./models/password'); 
-const { product } = require('./models/product');  
-const { supplier } = require('./models/supplier');
+const express = require('express');
+const path = require('path');
+const customEnv = require('custom-env')
+const dotenv = require('dotenv');
 
-//require('custom-env').env(process.env.NODE_ENV, './config');
-//
-//mongoose.connect(process.env.CONNECTION_STRING, 
-//                {   useNewUrlParser: true, 
-//                    useUnifiedTopology: true });
-//
-//var app = express();
-//
-//app.use(express.static('public'))
-//app.use(cors());
-//app.use(bodyParser.urlencoded({extended : true}));
-//app.use(express.json());
-//
-//app.use('/articles', articles);
-//app.use('/api', api);
-//
-//
-//app.listen(process.env.PORT);
+// Load environment variables 
+const loadEnv = (env) => {
+   const envPath = path.resolve(__dirname, 'config');
+   customEnv.env(env,envPath);
+};
+const environment = process.env.NODE_ENV || 'default';
+// Load default .env file
+loadEnv('');
 
-const Store_DB_Connect = async () => {
-  mongoose_S.connect(store.dbUrl, mongoose_S_Options)
-  .then(() => {//a_syn cmd
-        console.info('Database(store) connection successful to port: ', store.port);
-        
-        // Create express instance to setup API
-        const ExpressLoader = require("./loaders/Express");
-        new ExpressLoader();
-      })
-      .catch(err => {
-        console.error('Error: ', err, 'Database(store) connect');
-        return 0;
-      });
-      return 1;
-    };
-    const Pass_DB_Connect = async () => {
-      mongoose_P.connect(pass.dbUrl, mongoose_P_Options)
-      .then(() => {//a_syn cmd
-        console.info('Database(pass) connection successful to port: ', pass.port);
-        
-        // Create express instance to setup API
-        const ExpressLoader = require("./loaders/Express");
-        new ExpressLoader();
-      })
-      .catch(err => {
-        console.error('Error: ', err, 'Database(pass) connect');
-        return 0;
-      });
-      return 1;
-    };
+// Load specific environment .env file
+if(environment !== 'default'){
+   loadEnv(environment);
+}
 
-    if(!Pass_DB_Connect||!Store_DB_Connect)
-    return null;
-    
-    
+const dbLoader = require('./loaders/db')
+const ExpressLoader = require('./loaders/Express');
+const dbConfig = require('./config/db');
+const { exit } = require('process');
+const articleController = require('./controllers/article');
+
+const ArticleSchema = require ('./models/article');
+// const CartSchema = require('./models/cart');
+// const CategorySchema = require('./models/category');
+// const ClientSchema = require('./models/client');
+// const PasswordSchema = require('./models/password');
+// const ProductSchema = require('./models/product');
+// const SupplierSchema = require('./models/supplier');
+
+const api = require('./routes/api');
+const index = require('./routes/index');
+const cart = require('./routes/cart');
+const client = require('./routes/client');
+const product = require('./routes/product');
+const supplier = require('./routes/supplier');
+const articles = require('./routes/article');
+const category = require('./routes/category');
+const router = require('./routes/article');
+
+
+(async () => {
+   try {
+      // Init App
+      const expressLoader = new ExpressLoader();
+      const app = expressLoader.getApp();
+      
+      // Start server
+      const storePort = dbConfig.storePort || 3000;
+      const passPort = dbConfig.passPort || 3001;
+      expressLoader.startServer(storePort);
+
+      // Init DB
+      const db = new dbLoader();
+      const Store_DB_Connection = await db.Store_DB_Connect();
+      console.info('store-db connection:' , Store_DB_Connection);
+
+      // const Pass_DB_Connection = await db.Pass_DB_Connect();
+      // console.info('password-db connection:', Pass_DB_Connection);
+
+      if(!Store_DB_Connection /*|| !Pass_DB_Connection*/) {
+         console.error('The connection to the  DB failed');
+         return null;
+      }
+   }
+   catch (error) {
+      console.error('Error', error);
+   }
+
+})();
+
+
+
+
+
+
+
     /*
     Express.js Dependencies:
     To use Express.js, you’ll need to require the express module. 
@@ -89,7 +108,7 @@ app.js
 -----------------------paragraph_3(routes in Express)------------------------------
 -----------------------paragraph_4(controllers in Express)------------------------------   
 -----------------------paragraph_5(process.env.MONGODB_URI )------------------------------
------------------------paragraph_6(start+check your Express.js server with Mongoose using cmd)------------------------------
+-----------------------paragraph_6(start+check your Express.js app with Mongoose using cmd)------------------------------
 -----------------------paragraph_7(position by layout requirements)------------------------------
 
 -----------------------paragraph_1(full guide)------------------------------
@@ -130,7 +149,7 @@ app.js
    │   └── orderController.js   //Implement business logic
    ├── middleware /      # 7. Custom middleware//Use middleware for tasks like authentication, error handling, and logging
    │   └── auth.js       # Authentication middleware//custom middleware functions
-   ├── views /           # 8. Views //if using server-side rendering//create views (HTML templates)//templating engine like EJS or Pug
+   ├── views /           # 8. Views //if using app-side rendering//create views (HTML templates)//templating engine like EJS or Pug
    ├── public /          # 9.Static files(CSS, images, etc.)//the visual html+js+css
    └── .env              # 3. Environment variables//DB Configuration
                                                 //store database connection string and other sensitive information.
@@ -139,7 +158,7 @@ app.js
 -----------------------paragraph_2(data flows in Express app,Mongoose app)------------------------------
 
 1. **Client Request**:public/A.html+A.css for visual part A.js for functionality
-   - A client (e.g., a web browser or a mobile app) sends an HTTP request to your Express.js server.
+   - A client (e.g., a web browser or a mobile app) sends an HTTP request to your Express.js app.
    - The request includes information such as the HTTP method (GET, POST, etc.) and the requested URL (endpoint).
 
 2. **Express Router**:
@@ -220,7 +239,7 @@ Each layer plays a specific role in handling and processing the data.
      // Mount the routes
      require('./routes')(app);
 
-     // Start the server
+     // Start the app
      const PORT = process.env.PORT || 3000;
      app.listen(PORT, () => {
          console.log(`Server listening on port ${PORT}`);
@@ -310,7 +329,7 @@ Each layer plays a specific role in handling and processing the data.
      // Mount the routes
      app.use('/', routes);
 
-     // Start the server
+     // Start the app
      const PORT = process.env.PORT || 3000;
      app.listen(PORT, () => {
          console.log(`Server listening on port ${PORT}`);
@@ -338,12 +357,12 @@ The `process.env.MONGODB_URI` is an environment variable that holds the connecti
 
 2. **`MONGODB_URI`**:
    - `MONGODB_URI` is a conventionally used environment variable name for storing the MongoDB connection string.
-   - The connection string includes information about the MongoDB server (host, port), authentication credentials, and the specific database you want to connect to.
+   - The connection string includes information about the MongoDB app (host, port), authentication credentials, and the specific database you want to connect to.
 
 3. **Setting the Environment Variable**:
    - You can set `MONGODB_URI` in various ways:
      - In your `.env` file (if you're using **dotenv**).
-     - As an environment variable on your server (e.g., when deploying to a cloud service like Heroku).
+     - As an environment variable on your app (e.g., when deploying to a cloud service like Heroku).
      - In your local development environment (e.g., by exporting it in your terminal).
 
 4. **Connecting to MongoDB**:
@@ -354,29 +373,29 @@ The `process.env.MONGODB_URI` is an environment variable that holds the connecti
 In summary, `process.env.MONGODB_URI` holds the connection string for your MongoDB database, allowing your Express.js application to communicate with MongoDB. 😊🚀
 
 
------------------------paragraph_6(start+check your Express.js server with Mongoose using cmd)------------------------------
+-----------------------paragraph_6(start+check your Express.js app with Mongoose using cmd)------------------------------
 
 
 1. **Start the Server**:
    - Open your command prompt (CMD) or terminal.
-   - Navigate to the root directory of your Express.js project (where your `app.js` or `server.js` file is located).
-   - Run the following command to start your server:
+   - Navigate to the root directory of your Express.js project (where your `app.js` or `app.js` file is located).
+   - Run the following command to start your app:
      ```bash
      node app.js
      ```
-     Replace `app.js` with the actual name of your main server file.
+     Replace `app.js` with the actual name of your main app file.
 
 2. **Check if the Server Is Running**:
-   - If there are no errors, your server should be running and listening on the specified port (usually 3000 by default).
+   - If there are no errors, your app should be running and listening on the specified port (usually 3000 by default).
    - You'll see a message like "Server started on port 3000" in the console.
 
 3. **Access Your Application**:
    - Open a web browser.
    - Visit `http://localhost:3000` (or the port you specified) to see if your application responds.
-   - If you see your application's response (e.g., "Welcome to my website!"), your server is online.
+   - If you see your application's response (e.g., "Welcome to my website!"), your app is online.
 
 4. **Check MongoDB Connection**:
-   - If your application connects to MongoDB using Mongoose, ensure that your MongoDB server is also running.
+   - If your application connects to MongoDB using Mongoose, ensure that your MongoDB app is also running.
    - If your MongoDB connection is successful, your application can interact with the database.
    - You can check the MongoDB connection state using `mongoose.connection.readyState`:
      - `0`: Disconnected
