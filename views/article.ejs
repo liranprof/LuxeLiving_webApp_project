@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Store</title>
+    <link href="./articles.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Shoe Store</h1>
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <% for(i=0; i<article.length ; i++ ) {%>
+            <article>
+                <h2><%=article[i].title %></h2>
+                <p><%= article[i].content %></p>
+                <p>Author : <%= article[i].author %></p>
+                <date>Publish Date: <%= article[i].published %></date>
+            </article>
+        <% } %>
+    </section>
+    <footer>
+        <p>&copy; 2024 Shoe Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+ 
