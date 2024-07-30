@@ -1,11 +1,10 @@
-const mongoose_S = require('mongoose');//for store//ODM (Object Data Modeling)
-//uses Promises extensively(תדיר)//needs npm install mongoose
+const mongoose = require('mongoose');
 
 const {cart} = require('./cart');
 
-const Schema = mongoose_S.Schema;
+const Schema = mongoose.Schema;
 
-const Client = new Schema({
+const Client_Schema = new Schema({
   Name: {
     type: String,
     required: true 
@@ -13,6 +12,10 @@ const Client = new Schema({
   Last_name: {
     type: String,
     require: true
+  },
+  img_src: {
+    type: String,
+    require: false
   },
   Deploy_Address: {
     type: String,
@@ -40,7 +43,7 @@ const Client = new Schema({
   },
 });
 
-module.exports = mongoose_S.model('Client', Client);
+module.exports = mongoose.model('clients', Client_Schema);
 
 
 

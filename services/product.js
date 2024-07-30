@@ -1,16 +1,19 @@
 const Product = require('../models/product');
 
-const createProduct = async (product_id, name, type, brand, supplier, price) => {
+
+const createProduct = async (product_id, name,price,img_src,
+    type, brand, supplier,descriptions ) => {
 
     const product = new Product({
         Product_id: product_id,
         Name: name,
+        Price: price,
+        img_src:img_src,
         Type: type,
         Brand: brand,
         Suppliers: supplier,
-        Price: price,
         Suppliers_amount: 1,
-        Descriptions: null,
+        Descriptions: descriptions,
         Discount: 0,
         Rank: 0,
     });
@@ -19,9 +22,25 @@ const createProduct = async (product_id, name, type, brand, supplier, price) => 
 };
 
 const getProduct = async (product_id) => {
-    return getProductById(product_id);
+    const product=getProductById(product_id);
+    return product;
 };
 
+const getAllProduct = async () => {
+    try {
+      return await Product.find({}); // Fetch products from the database
+    } catch (err) {
+      throw new Error('Unable to fetch products');
+    }
+  };
+const getProductsType = async () => {
+    try {
+      const types = await Product.distinct('Type');
+      return types;
+    } catch (err) {
+      throw new Error('Unable to fetch product types');
+    }
+  };
 const updateProduct = async (product_id, name, type, brand, suppliers_amount, suppliers, price, description, discount, rank) => {
     const product = await getProductById(product_id);
     if (!product)
@@ -79,6 +98,8 @@ module.exports = {
     getProductById,
     createProduct,
     getProduct,
+    getAllProduct,
+    getProductsType,
     updateProduct,
     deleteProduct
 }

@@ -3,10 +3,11 @@ const Client = require('../models/client');
 const Pass = require('../models/password');
 //const Cart_Service = require('../services/cart');
 
-const createClient = async (name, last_name, deploy, email, password) => {
+const createClient = async (name, last_name, img_src ,deploy, email, password) => {
     const client = new Client({
         Name: name,
         Last_name: last_name,
+        img_src: img_src,
         Deploy_Address: deploy,
         Carts_num: 0,
         Carts: null,

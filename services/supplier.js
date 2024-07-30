@@ -1,10 +1,11 @@
 const Supplier = require('../models/supplier');
 const Product = require('../models/product');
 
-const createSupplier = async (name, supplier_ID) => {
+const createSupplier = async (supplier_ID,name) => {
     const supplier = new Supplier({
-        Name: name,
         Supplier_ID: supplier_ID,
+        Name: name,
+        img_src:"",
         Products_mount: 0,
         Products: null,
         Address: 0,
@@ -21,6 +22,9 @@ const getSupplier = async (supplier_ID) => {
     return supplier;
 };
 
+const getAllSuppliers=async()=>{
+    return await Supplier.find({});;
+}
 const deleteSupplier = async (supplier_ID) => {
     const supplier = await getSupplierById(supplier_ID);
     if (!supplier)
@@ -54,7 +58,7 @@ const deleteProducts = async (supplier_ID, products, products_mount) => {
             if (!product)
                 return null;
 
-                await await supplier.Products.remove(products[i]);
+                await supplier.Products.remove(products[i]);
             
                 //check if this last supplier on product in supplier list
             if (product.Suppliers_amount = 1)
@@ -111,6 +115,7 @@ const getSupplierById = async (supplier_ID) => {
 module.exports = {
     createSupplier,
     getSupplier,
+    getAllSuppliers,
     getSupplierById,
     deleteSupplier,
     updateSupplier,

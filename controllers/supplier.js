@@ -21,6 +21,14 @@ const getSupplier = async (req, res) => {
     res.json(Supplier);
 };
 
+const getAllSuppliers = async (req, res) => {
+  const suppliers = await Supplier_Service.getAllProduct();
+  if (!suppliers) {
+    return res.status(404).json({ errors: ['Products not found'] });
+  }
+
+  res.json(suppliers);
+};
 const updateSupplier = async (req, res) => {
   const Supplier = await Supplier_Service.updateSupplier(
     req.body.Supplier_ID , 
@@ -45,6 +53,7 @@ const deleteSupplier = async (req, res) => {
 module.exports = {
   createSupplier,
   getSupplier,
+  getAllSuppliers,
   deleteSupplier,
   updateSupplier
 };

@@ -73,6 +73,9 @@ const getProduct = async (cart_id, product) => {
     return null;
 };
 
+const getAllProduct=async(cart_id)=>{
+    return await Product.find({});;
+}
 const deleteProduct = async (cart_id, product) => {
 
     //option

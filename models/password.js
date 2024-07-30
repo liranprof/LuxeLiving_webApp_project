@@ -1,8 +1,8 @@
-const mongoose_P = require('mongoose');//for passwords
+const mongoose = require('mongoose');//for passwords
 
-const Schema = mongoose_P.Schema;
+const Schema = mongoose.Schema;
 
-const Password = new Schema({
+const Password_Schema = new Schema({
     Email: {//+admin
         type: String,
         require: true
@@ -11,7 +11,6 @@ const Password = new Schema({
         type: String,
         require: true
     },
-    // hidden from user
 });
 
-module.exports = mongoose_P.model('Password', Password);
+module.exports = mongoose.model('password', Password_Schema);

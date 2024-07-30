@@ -1,5 +1,6 @@
 const Cart_Service = require('../services/cart');
 
+//The req.params.id part extracts the value of the id parameter from the URL.
 const createCart = async (req, res) => {
     const newCart = await Cart_Service.createCart(  
       req.body.ClientEmail,
@@ -15,16 +16,18 @@ const getCart = async (req, res) => {
     }
     res.json(cart);
 };
-
-const update_Purchased_date = async (req,res) => {
-  const cart = await Cart_Service.update_Purchased_date(req.body.Cart_id)
-  res.json(!req.body.Cart_id){
-    res.status(400).json({
-      message: " Cart_id is required",
-    });
+const getAllProduct = async (req, res) => {
+  const products = await Cart_Service.getAllProduct();
+  if (!products) {
+    return res.status(404).json({ errors: ['Products not found'] });
   }
 
-  
+  res.json(products);
+};
+const update_Purchased_date = async (req,res) => {
+  const cart = await Cart_Service.update_Purchased_date(req.body.Cart_id)
+  res.json(!req.body.Cart_id)
+  {res.status(400).json({message: " Cart_id is required"});}; 
 };
 
 const addProduct = async (req,res) => {
@@ -66,5 +69,6 @@ module.exports = {
   update_Purchased_date,
   addProduct,
   deleteProduct,
-  getProduct
+  getProduct,
+  getAllProduct
 };

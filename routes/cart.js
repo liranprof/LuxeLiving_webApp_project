@@ -1,14 +1,18 @@
 const express = require('express');
 const router = express.Router();
-
+const CartController = require('../controllers/cart.js');
 // Define your routes here
-router.get('/', (req, res) => {
-    res.send('Welcome to my website!');
-});
+router.route('/')
+.get(CartController.getAllProduct)
+.post(CartController.createCart);
 
-router.get('/about', (req, res) => {
-    res.send('About page');
-});
-
+router.route('/:id')
+    .get(CartController.getProduct)
+    .get(CartController.getCart)
+    .patch(CartController.update_Purchased_date)
+    .patch(CartController.addProduct)
+    .delete(CartController.deleteCart)
+    .delete(CartController.deleteProduct);
+    
 // Export the router
 module.exports = router;

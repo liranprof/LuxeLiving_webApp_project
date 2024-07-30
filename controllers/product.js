@@ -1,6 +1,7 @@
 const Product_Service = require('../services/product');
 
-const createProduct = async (req, res) => {
+
+async function createProduct(req, res) {
   const newProduct = await Product_Service.createProduct(
     req.body.Product_id,
     req.body.Name,
@@ -23,6 +24,20 @@ const getProduct = async (req, res) => {
   }
 
   res.json(product);
+};
+
+const getAllProduct = async (req, res) => {
+  try {
+    const products = await Product_Service.getAllProduct();
+    const types = await Product_Service.getProductsType();
+    res.render('welcome', { Products_Types: types , Products: products });
+    //res.render('view_for_render', {passes_data});
+  //The res.render() method combines the EJS template with 
+  //the provided data and sends the resulting HTML to the client.
+  //render view_for_render know path by the app.set()
+  } catch (err) {
+    res.status(500).send(err);
+  }
 };
 
 const updateProduct = async (req, res) => {
@@ -57,6 +72,7 @@ const deleteProduct = async (req, res) => {
 module.exports = {
   createProduct,
   getProduct,
+  getAllProduct,
   updateProduct,
   deleteProduct,
 };

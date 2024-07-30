@@ -1,0 +1,452 @@
+[
+    {
+        "Cart_id": 1,
+        "Products_num": 12,
+        "Products": [5, 10, 15, 20, 25, 30],
+        "TotalPrice": 100.50,
+        "Purchased_date": "2024-01-15T10:30:00Z",
+        "ClientEmail": "john.doe@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 2,
+        "Products_num": 25,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 50],
+        "TotalPrice": 300.00,
+        "Purchased_date": null,
+        "ClientEmail": "jane.smith@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 3,
+        "Products_num": 8,
+        "Products": [30, 31, 32, 33, 34, 35, 36, 37],
+        "TotalPrice": 240.75,
+        "Purchased_date": "2024-02-20T14:00:00Z",
+        "ClientEmail": "alice.johnson@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 4,
+        "Products_num": 15,
+        "Products": [5, 10, 20, 25, 30],
+        "TotalPrice": 150.00,
+        "Purchased_date": null,
+        "ClientEmail": "bob.brown@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 5,
+        "Products_num": 20,
+        "Products": [12, 22, 32, 42, 52],
+        "TotalPrice": 400.00,
+        "Purchased_date": "2024-03-15T11:15:00Z",
+        "ClientEmail": "charlie.davis@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 6,
+        "Products_num": 10,
+        "Products": [45, 46, 47, 48, 49],
+        "TotalPrice": 500.00,
+        "Purchased_date": null,
+        "ClientEmail": "diana.martinez@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 7,
+        "Products_num": 50,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+        "TotalPrice": 600.00,
+        "Purchased_date": "2024-04-10T09:00:00Z",
+        "ClientEmail": "eva.garcia@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 8,
+        "Products_num": 3,
+        "Products": [13, 23, 33],
+        "TotalPrice": 90.00,
+        "Purchased_date": null,
+        "ClientEmail": "frank.hernandez@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 9,
+        "Products_num": 22,
+        "Products": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44],
+        "TotalPrice": 220.00,
+        "Purchased_date": "2024-05-05T16:45:00Z",
+        "ClientEmail": "grace.lee@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 10,
+        "Products_num": 14,
+        "Products": [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27],
+        "TotalPrice": 140.00,
+        "Purchased_date": null,
+        "ClientEmail": "henry.martin@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 11,
+        "Products_num": 19,
+        "Products": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38],
+        "TotalPrice": 180.00,
+        "Purchased_date": "2024-06-01T12:00:00Z",
+        "ClientEmail": "isabella.thompson@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 12,
+        "Products_num": 1,
+        "Products": [50],
+        "TotalPrice": 50.00,
+        "Purchased_date": null,
+        "ClientEmail": "jack.white@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 13,
+        "Products_num": 5,
+        "Products": [11, 12, 13, 14, 15],
+        "TotalPrice": 75.00,
+        "Purchased_date": null,
+        "ClientEmail": "kira.lewis@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 14,
+        "Products_num": 30,
+        "Products": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41],
+        "TotalPrice": 400.00,
+        "Purchased_date": null,
+        "ClientEmail": "liam.walker@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 15,
+        "Products_num": 10,
+        "Products": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
+        "TotalPrice": 100.00,
+        "Purchased_date": "2024-07-10T15:30:00Z",
+        "ClientEmail": "mia.hall@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 16,
+        "Products_num": 18,
+        "Products": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        "TotalPrice": 180.00,
+        "Purchased_date": null,
+        "ClientEmail": "noah.young@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 17,
+        "Products_num": 4,
+        "Products": [2, 3, 5, 7],
+        "TotalPrice": 30.00,
+        "Purchased_date": "2024-08-22T10:00:00Z",
+        "ClientEmail": "olivia.allen@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 18,
+        "Products_num": 22,
+        "Products": [6, 12, 18, 24, 30, 36, 42, 48, 5, 11, 17, 23, 29, 35, 41, 47, 2, 8, 14, 20, 26, 32],
+        "TotalPrice": 220.00,
+        "Purchased_date": null,
+        "ClientEmail": "paul.king@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 19,
+        "Products_num": 13,
+        "Products": [1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37],
+        "TotalPrice": 130.00,
+        "Purchased_date": "2024-09-30T09:15:00Z",
+        "ClientEmail": "quinn.wright@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 20,
+        "Products_num": 50,
+        "Products": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+        "TotalPrice": 600.00,
+        "Purchased_date": null,
+        "ClientEmail": "ryan.scott@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 21,
+        "Products_num": 19,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+        "TotalPrice": 190.00,
+        "Purchased_date": "2024-10-10T14:30:00Z",
+        "ClientEmail": "sophia.green@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 22,
+        "Products_num": 30,
+        "Products": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        "TotalPrice": 300.00,
+        "Purchased_date": null,
+        "ClientEmail": "thomas.adams@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 23,
+        "Products_num": 16,
+        "Products": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48],
+        "TotalPrice": 160.00,
+        "Purchased_date": null,
+        "ClientEmail": "uma.baker@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 24,
+        "Products_num": 17,
+        "Products": [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33],
+        "TotalPrice": 170.00,
+        "Purchased_date": null,
+        "ClientEmail": "victor.carter@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 25,
+        "Products_num": 24,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+        "TotalPrice": 300.00,
+        "Purchased_date": "2024-11-11T11:00:00Z",
+        "ClientEmail": "wendy.evans@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 26,
+        "Products_num": 20,
+        "Products": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40],
+        "TotalPrice": 200.00,
+        "Purchased_date": null,
+        "ClientEmail": "xander.flores@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 27,
+        "Products_num": 18,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+        "TotalPrice": 180.00,
+        "Purchased_date": "2024-12-01T12:30:00Z",
+        "ClientEmail": "yara.garner@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 28,
+        "Products_num": 10,
+        "Products": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+        "TotalPrice": 500.00,
+        "Purchased_date": null,
+        "ClientEmail": "zach.hughes@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 29,
+        "Products_num": 1,
+        "Products": [5],
+        "TotalPrice": 5.00,
+        "Purchased_date": null,
+        "ClientEmail": "john.doe@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 30,
+        "Products_num": 50,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+        "TotalPrice": 600.00,
+        "Purchased_date": "2024-12-10T14:45:00Z",
+        "ClientEmail": "jane.smith@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 31,
+        "Products_num": 21,
+        "Products": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42],
+        "TotalPrice": 210.00,
+        "Purchased_date": null,
+        "ClientEmail": "alice.johnson@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 32,
+        "Products_num": 16,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        "TotalPrice": 160.00,
+        "Purchased_date": "2024-01-25T08:30:00Z",
+        "ClientEmail": "bob.brown@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 33,
+        "Products_num": 12,
+        "Products": [10, 20, 30, 40, 50],
+        "TotalPrice": 150.00,
+        "Purchased_date": null,
+        "ClientEmail": "charlie.davis@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 34,
+        "Products_num": 25,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        "TotalPrice": 250.00,
+        "Purchased_date": "2024-11-20T12:00:00Z",
+        "ClientEmail": "diana.martinez@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 35,
+        "Products_num": 45,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+        "TotalPrice": 450.00,
+        "Purchased_date": "2024-12-15T13:30:00Z",
+        "ClientEmail": "eva.garcia@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 36,
+        "Products_num": 17,
+        "Products": [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33],
+        "TotalPrice": 170.00,
+        "Purchased_date": null,
+        "ClientEmail": "frank.hernandez@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 37,
+        "Products_num": 9,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        "TotalPrice": 90.00,
+        "Purchased_date": "2024-08-28T14:50:00Z",
+        "ClientEmail": "grace.lee@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 38,
+        "Products_num": 24,
+        "Products": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33],
+        "TotalPrice": 240.00,
+        "Purchased_date": null,
+        "ClientEmail": "henry.martin@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 39,
+        "Products_num": 16,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        "TotalPrice": 160.00,
+        "Purchased_date": null,
+        "ClientEmail": "isabella.thompson@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 40,
+        "Products_num": 20,
+        "Products": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+        "TotalPrice": 500.00,
+        "Purchased_date": null,
+        "ClientEmail": "jack.white@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 41,
+        "Products_num": 30,
+        "Products": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        "TotalPrice": 300.00,
+        "Purchased_date": null,
+        "ClientEmail": "liam.walker@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 42,
+        "Products_num": 5,
+        "Products": [1, 2, 3, 4, 5],
+        "TotalPrice": 25.00,
+        "Purchased_date": "2024-09-15T10:25:00Z",
+        "ClientEmail": "mia.hall@example.com",
+        "Purchased_valid": true
+    },
+    {
+        "Cart_id": 43,
+        "Products_num": 35,
+        "Products": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 1, 6, 11, 16, 21, 26, 31, 36, 2, 7, 12, 17, 22, 27, 32, 37, 3, 8, 13, 18, 23, 28, 4, 9, 14, 19],
+        "TotalPrice": 500.00,
+        "Purchased_date": null,
+        "ClientEmail": "noah.young@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 44,
+        "Products_num": 50,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+        "TotalPrice": 600.00,
+        "Purchased_date": null,
+        "ClientEmail": "olivia.allen@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 45,
+        "Products_num": 1,
+        "Products": [1],
+        "TotalPrice": 1.00,
+        "Purchased_date": null,
+        "ClientEmail": "paul.king@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 46,
+        "Products_num": 28,
+        "Products": [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 1, 3, 5, 7, 9, 11, 13],
+        "TotalPrice": 300.00,
+        "Purchased_date": null,
+        "ClientEmail": "quinn.wright@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 47,
+        "Products_num": 20,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+        "TotalPrice": 200.00,
+        "Purchased_date": null,
+        "ClientEmail": "ryan.scott@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 48,
+        "Products_num": 19,
+        "Products": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38],
+        "TotalPrice": 190.00,
+        "Purchased_date": null,
+        "ClientEmail": "sophia.green@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 49,
+        "Products_num": 10,
+        "Products": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
+        "TotalPrice": 100.00,
+        "Purchased_date": null,
+        "ClientEmail": "thomas.adams@example.com",
+        "Purchased_valid": false
+    },
+    {
+        "Cart_id": 50,
+        "Products_num": 38,
+        "Products": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38],
+        "TotalPrice": 380.00,
+        "Purchased_date": "2024-12-31T23:59:59Z",
+        "ClientEmail": "uma.baker@example.com",
+        "Purchased_valid": true
+    }
+]

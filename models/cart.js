@@ -1,18 +1,13 @@
-const mongoose_S = require('mongoose');//ODM (Object Data Modeling)//uses Promises extensively(תדיר)//needs npm install mongoose
-
+const mongoose = require('mongoose');
 const {product} = require('./product');//in cart there is products
 
-const Schema = mongoose_S.Schema;
+const Schema = mongoose.Schema;
 
 const Cart_Schema = new Schema({
     Cart_id : {
       type: Number,
       require: true
   },
-    Size : {
-        type: Number,
-        require: true
-    },
     Products_num: {
       type: Number,
       require: true,
@@ -39,7 +34,7 @@ const Cart_Schema = new Schema({
     },
 });
 
-module.exports = mongoose_S.model('Cart', Cart_Schema);
+module.exports = mongoose.model('carts', Cart_Schema);
 
 
 

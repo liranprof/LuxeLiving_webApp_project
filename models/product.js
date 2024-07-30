@@ -1,11 +1,10 @@
-const mongoose_S = require('mongoose');//for store//ODM (Object Data Modeling)
-//uses Promises extensively(תדיר)//needs npm install mongoose
+const mongoose = require('mongoose');
 
 const {supplier} = require('./supplier');
 
-const Schema = mongoose_S.Schema;
+const Schema = mongoose.Schema;
 
-const Product = new Schema({
+const Product_Schema = new Schema({
     Product_id: {
         type: Number,
         required: true
@@ -17,6 +16,10 @@ const Product = new Schema({
     Price: {
         type: Number,
         require: true,
+    },
+    img_src: {
+        type: String,
+        require: false,
     },
     Suppliers: {
         type: [supplier],
@@ -48,4 +51,4 @@ const Product = new Schema({
     },
 });
 
-module.exports = mongoose_S.model('Product', Product);
+module.exports = mongoose.model('products', Product_Schema);
