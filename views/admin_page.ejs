@@ -1,4 +1,4 @@
-///////////////////admin_page//////////////////////////////////
+<!-- ///////////////////admin_page//////////////////////////////////
 
 ////////title///// admin_page
 graphic top justify frame (green)
@@ -74,4 +74,159 @@ if(=>carts)user_email+price+purchased_valid + total_for_delete
 //on item_card view (delete_button if onclick...)
 onclick button_approve=>popup if you sure?=>yes(delete form DB)||no(show only)
 onclick button_decline=>disable all deletion mark
+ -->
 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/style.css">
+    <style>
+        /* Sidebar and layout styles */
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            background-color: #343a40;
+            color: #fff;
+            padding-top: 20px;
+            overflow-y: auto;
+        }
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+            padding: 10px;
+            display: block;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .card-img-top {
+            height: 150px;
+            object-fit: cover;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .card.highlighted {
+            border: 2px solid red;
+        }
+        .button-approve, .button-decline {
+            margin: 5px;
+        }
+        .graphic-frame {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .graphic-frame.green { background-color: #d4edda; }
+        .graphic-frame.light-green { background-color: #c3e6cb; }
+        .graphic-frame.light-gray { background-color: #e2e3e5; }
+        .graphic-frame.metal-blue { background-color: #d6e9f9; }
+        .graphic-frame.light-orange { background-color: #f8d7da; }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-center">Admin Dashboard</h4>
+        <a href="/admin/welcome">Welcome</a>
+        <a href="/admin/about">About</a>
+        <a href="/admin/terms">Terms</a>
+        <a href="/admin/admin_detail">Admin Details</a>
+        <a href="/admin/products_catalog">Products Catalog</a>
+        <a href="/admin/suppliers_catalog">Suppliers Catalog</a>
+        <a href="/admin/users_catalog">Users Catalog</a>
+        <a href="/admin/carts">Carts</a>
+        <a href="/admin/financial">Financial</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Graphic Frame (Green) -->
+        <div class="graphic-frame green">
+            <h1>Welcome <%= admin_name %></h1>
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="/public/logo.png" alt="Logo" class="img-fluid" style="max-height: 50px;">
+                <div class="text-center">
+                    <h2>Your Slogan Here</h2>
+                </div>
+            </div>
+            <form class="d-flex mt-3" action="/admin/search" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search" name="query">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+
+        <!-- Body Content -->
+        <div id="admin-content">
+            <!-- Graphic Frames for Different Sections -->
+            <% if (currentPage === 'products_catalog') { %>
+                <div class="graphic-frame light-green">
+                    <a href="/admin/products_financial" class="btn btn-primary">Products Financial</a>
+                </div>
+            <% } %>
+
+            <% if (currentPage === 'suppliers_catalog') { %>
+                <div class="graphic-frame light-gray">
+                    <a href="/admin/suppliers_financial" class="btn btn-primary">Suppliers Financial</a>
+                </div>
+            <% } %>
+
+            <% if (currentPage === 'users_catalog') { %>
+                <div class="graphic-frame metal-blue">
+                    <a href="/admin/users_financial" class="btn btn-primary">Users Financial</a>
+                </div>
+            <% } %>
+
+            <% if (currentPage === 'carts') { %>
+                <div class="graphic-frame light-orange">
+                    <a href="/admin/carts_financial" class="btn btn-primary">Carts Financial</a>
+                </div>
+            <% } %>
+
+            <!-- Item List -->
+            <div class="row">
+                <% items.forEach(item => { %>
+                    <div class="col-md-4">
+                        <div class="card <%= item.highlighted ? 'highlighted' : '' %>">
+                            <img src="<%= item.image %>" class="card-img-top" alt="<%= item.name %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= item.name %></h5>
+                                <% if (currentPage === 'products_catalog') { %>
+                                    <p class="card-text">Type: <%= item.type %><br>
+                                    Price: $<%= item.price %><br>
+                                    Discount: <%= item.discount ? item.discount + '%' : 'N/A' %><br>
+                                    Rank: <%= item.rank %></p>
+                                <% } else if (currentPage === 'suppliers_catalog') { %>
+                                    <p class="card-text">Products Amount: <%= item.productsAmount %></p>
+                                <% } else if (currentPage === 'users_catalog') { %>
+                                    <p class="card-text">Email: <%= item.email %><br>
+                                    Total Carts Price: $<%= item.totalCartsPrice %></p>
+                                <% } else if (currentPage === 'carts') { %>
+                                    <p class="card-text">User Email: <%= item.userEmail %><br>
+                                    Price: $<%= item.price %><br>
+                                    Purchased Valid: <%= item.purchasedValid %></p>
+                                <% } %>
+                                <a href="/admin/item/<%= item.id %>" class="btn btn-primary">View Details</a>
+                                <button class="btn btn-danger delete-button" data-id="<%= item.id %>">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+
+            <!-- Admin Page Information -->
+            <div class="mt-4">
+                <% if (currentPage === 'products_catalog') { %>
+                    <p>Total Products: <%= totals.totalProducts %> | Total for Deletion: <%= totals.totalForDelete %></p>
+                <% } else if (currentPage === 'suppl

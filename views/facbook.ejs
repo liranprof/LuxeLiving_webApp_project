@@ -2,3 +2,98 @@
 menu like admin||menu like user
 store_information
 store_google_maps(by store address)
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Integration</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Facebook Integration</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Facebook Login</h2>
+                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                </fb:login-button>
+                <div id="status"></div>
+            </section>
+            <section>
+                <h2>Share on Facebook</h2>
+                <div class="fb-share-button" 
+                     data-href="https://yourwebsite.com" 
+                     data-layout="button_count">
+                </div>
+            </section>
+            <section>
+                <h2>Facebook Page Feed</h2>
+                <div class="fb-page" 
+                     data-href="https://www.facebook.com/yourfacebookpage" 
+                     data-tabs="timeline" 
+                     data-width="" 
+                     data-height="" 
+                     data-small-header="false" 
+                     data-adapt-container-width="true" 
+                     data-hide-cover="false" 
+                     data-show-facepile="true">
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 [Your Company]. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Load the Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="YzL9opF1"></script>
+
+    <script>
+        // Facebook login status check
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            if (response.status === 'connected') {
+                testAPI();
+            } else {
+                document.getElementById('status').innerHTML = 'Please log ' +
+                'into this app.';
+            }
+        }
+
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
+
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId     : 'your-app-id',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v10.0'
+            });
+
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        };
+
+        function testAPI() {
+            console.log('Welcome! Fetching your information.... ');
+            FB.api('/me', function(response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById('status').innerHTML =
+                    'Thanks for logging in, ' + response.name + '!';
+            });
+        }
+    </script>
+</body>
+</html>

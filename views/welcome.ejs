@@ -50,10 +50,16 @@
                         <button id="btn_filter" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img id="img_filter" src="./img/fillter_icon.png" alt="">
                         </button>
-                        <ul class="dropdown-menu">
-                            <li><i class="dropdown-item" href="#">Action</i></li>
-                            <li><i class="dropdown-item" href="#">Another action</i></li>
-                            <li><i class="dropdown-item" href="#">Something else here</i></li>
+                        <ul id="filter_menu" class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" data-filter="All">All</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Appliance">Appliance</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Baking">Baking</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Cooking">Cooking</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Cookware">Cookware</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Cutlery">Cutlery</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Dinnerware">Dinnerware</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Storage">Storage</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Utensils">Utensils</a></li>
                         </ul>
                     </div>
 
@@ -74,11 +80,11 @@
                 <p>No Products_Types available.</p>
                 <% } else { %>
                     <%for(let i=0; i < Products_Types.length; i++) { %>
-            <a class="a_menu"><%= Products_Types[i] %></a>
+            <a class="a_menu" href="#" data-filter="<%=Products_Types[i]%>"><%= Products_Types[i] %></a>
             <% } %>
             <% } %>
-            <a class="a_menu">About</a>
-            <a class="a_menu">Terms</a>
+            <a class="a_menu" id="About" data-filter="About">About</a>
+            <a class="a_menu" id="Terms" data-filter="Terms">Terms</a>
         </div>
     </div>
 
@@ -117,6 +123,7 @@
             </div>
         </div>
     </div>
+    <script src="./scripts/index.js"></script>
     <script src="../app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

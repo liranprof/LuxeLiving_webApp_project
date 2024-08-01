@@ -1,0 +1,30 @@
+<div id="cards_div" class="row row-cols-1 row-cols-md-2 g-4">
+    <% if (typeof Products==='undefined' || Products.length===0) { %>
+        <p>No products available.</p>
+        <% } else { %>
+            <%for(let i=0; i < Products.length; i++) { %>
+                <div id="card" class="card_div_<%= Products[i].Product_id %>">
+                    
+                    <img id="img_card" src="./prod_img/<%= Products[i].Name %>.jpeg">
+                    <hr>
+                    <i id="i_item_name">
+                        <%= Products[i].Name %>
+                    </i><br>
+                    <i id="i_item_info1">
+                        <%= Products[i].Type %>
+                    </i><br>
+                    <i id="i_item_info2">
+                        <%= Products[i]. Price%>$
+                    </i><br>
+                    <i id="i_item_info3">
+                        <%= Products[i].discount %>
+                    </i><br>
+                    <i id="i_item_info4">
+                        <%= Products[i].Rank %>
+                    </i><br>
+
+                </div>
+                <% } %>
+                    <% } %>
+</div>
+
