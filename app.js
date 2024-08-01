@@ -19,11 +19,16 @@ the server responds with specific headers that allow or deny access.*/
 
 const mongoose = require('mongoose');//ODM (Object Data Modeling)
 //uses Promises frequent//needs npm install mongoose
+
+const path = require('path');
+
+// Routes
 const cart = require('./routes/cart.js');
 const client = require('./routes/client.js');
 const password = require('./routes/password.js');
 const product = require('./routes/product.js');
 const supplier = require('./routes/supplier.js');
+const api = require('./routes/api.js');
 
 const net = require('net');//for Handle SIGINT (Ctrl+C)
 
@@ -52,9 +57,12 @@ var app = express();//express module<-Node.js module server
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
+app.set('/views', path.join(__dirname, 'views'));
+
 //This line configures Express to use EJS as the template engine
 // for rendering views.
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 /*point for static assets (images, CSS files, JavaScript files, and more even subdirectores)
 in an Express app
@@ -81,6 +89,7 @@ app.use('/client', client);
 app.use('/password', password);
 app.use('/product', product);
 app.use('/supplier', supplier);
+app.use('/api', api);
 
 
 // Define a test route/////only for tests//////
@@ -97,6 +106,20 @@ app.use('/supplier', supplier);
 
 // routes handlers
 app.get('/', product);
+
+app.get('/about', (req, res) => {
+  res.render('about'); // Renders about.ejs
+});
+
+// Route to render Terms content
+app.get('/terms', (req, res) => {
+  res.render('terms'); // Renders terms.ejs
+});
+
+app.get('/regstration', (req,res) => {
+  res.render('registration');
+});
+
 //browser sends a GET request to the path /, this handler 
 // Express.js route handler for the GET HTTP method
 
