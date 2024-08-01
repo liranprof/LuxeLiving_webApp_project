@@ -1,5 +1,18 @@
 const Product_Service = require('../services/product');
 
+// Verify 
+const verifyId = async (Product_id) => {
+  if (typeof Product_id === 7 && Product_id.length > 0 && Product_id.length <= 24) 
+      return true;
+  else
+      return false; 
+}
+const verifyName = async (Name) => {
+  if (typeof Name === 'string' && Name.length <= 40)
+      return true;
+  else
+      return false;
+}
 
 async function createProduct(req, res) {
   const newProduct = await Product_Service.createProduct(
@@ -18,12 +31,41 @@ async function createProduct(req, res) {
 };
 
 const getProduct = async (req, res) => {
-  const product = await Product_Service.getProductById(req.params.id);
-  if (!product) {
-    return res.status(404).json({ errors: ['Product not found'] });
+  const productId = req.params.id;
+  const verifyID = await verifyId(productId);
+  if(verifyID)
+  {
+    const product = await Product_Service.getProductById(req.params.id);
+    if (!product) {
+      return res.status(404).json({ errors: ['Product not found'] });
+    }
+    res.json(product);
   }
+  else return;
+};
 
-  res.json(product);
+const getProductByName = async (req,res) => {
+  const productName = req.body.Name;
+  const verifName = await verifyName(productName);
+  if (verifName) {
+    const product = await Product_Service.getProductByName(req.body.Name);
+    if (!product) {
+      return res.status(404).json({ errors: ['Product not found'] });
+    }
+    res.json(product);
+  }
+};
+
+const getProductByNameParams = async (req,res) => {
+  const productName = req.params.Name;
+  const verifName = await verifyName(productName);
+  if (verifName) {
+    const product = await Product_Service.getProductByName(req.params.Name);
+    if (!product) {
+      return res.status(404).json({ errors: ['Product not found'] });
+    }
+    res.json(product);
+  }
 };
 
 const getAllProduct = async (req, res) => {
@@ -40,39 +82,83 @@ const getAllProduct = async (req, res) => {
   }
 };
 
-const updateProduct = async (req, res) => {
-  const product = await Product_Service.updateProduct(
-    req.body.Product_id,
-    req.body.Name,
-    req.body.Type,
-    req.body.Brand,
-    req.body.Suppliers,
-    req.body.Suppliers_amount,
-    req.body.Price,
-    req.body.Description,
-    req.body.Discount,
-    req.body.Rank
-  );
-  if (!product) {
-    return res.status(404).json({ errors: ['Product not found'] });
+const getProducts = async (req,res) => { // JSONs
+  try {
+    const products = await Product_Service.getAllProduct();
+    res.json(products);
+  } catch (err) {
+    res.status(500).json({err});
   }
+};
 
-  res.json(product);
+const getProductsByType = async (req,res) => { // JSONs
+  try {
+    const productType = req.body.Type;
+    const products = await Product_Service.getProductsByType(req.body.Type);
+    res.json(products);
+  } catch (err) {
+    res.status(500).json({err});
+  }
+};
+
+const getProductsByTypeParams = async (req,res) => { // JSONs
+  try {
+    const productType = req.params.Type;
+    const products = await Product_Service.getProductsByType(req.params.Type);
+    res.status(200).json(products);
+  } catch (err) {
+    res.status(500).json({err});
+  }
+};
+
+const updateProduct = async (req, res) => {
+  const productId = req.params.id;
+  const verifyID = await verifyId(productId);
+  if(verifyID)
+  {
+    const product = await Product_Service.updateProduct(
+      req.body.Product_id,
+      req.body.Name,
+      req.body.Type,
+      req.body.Brand,
+      req.body.Suppliers,
+      req.body.Suppliers_amount,
+      req.body.Price,
+      req.body.Description,
+      req.body.Discount,
+      req.body.Rank
+    );
+    if (!product) {
+      return res.status(404).json({ errors: ['Product not found'] });
+    }
+    res.json(product);
+  }
 };
 
 const deleteProduct = async (req, res) => {
-  const product = await Product_Service.deleteProduct(req.params.id);
-  if (!product) {
-    return res.status(404).json({ errors: ['Product not found'] });
+  const productId = req.params.id;
+  const verifyID = await verifyId(productId);
+  if(verifyID)
+  {
+    const product = await Product_Service.deleteProduct(req.params.id);
+    if (!product) {
+      return res.status(404).json({ errors: ['Product not found'] });
+    }
+    res.send();
   }
-
-  res.send();
 };
 
 module.exports = {
+  verifyId,
+  verifyName,
   createProduct,
   getProduct,
+  getProductByName,
   getAllProduct,
+  getProducts,
   updateProduct,
   deleteProduct,
+  getProductsByType,
+  getProductsByTypeParams,
+  getProductByNameParams,
 };
