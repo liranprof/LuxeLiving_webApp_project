@@ -33,6 +33,7 @@ const getAllProduct = async () => {
       throw new Error('Unable to fetch products');
     }
   };
+
 const getProductsType = async () => {
     try {
       const types = await Product.distinct('Type');
@@ -40,7 +41,8 @@ const getProductsType = async () => {
     } catch (err) {
       throw new Error('Unable to fetch product types');
     }
-  };
+};
+
 const updateProduct = async (product_id, name, type, brand, suppliers_amount, suppliers, price, description, discount, rank) => {
     const product = await getProductById(product_id);
     if (!product)
@@ -93,6 +95,13 @@ const getProductById = async (Product_id) => {
 const getProduct_Id = async () => {
    return this.Product_Id;
 };
+const getProductByName = async (Name) => {
+    return await Product.find({Name});
+};
+const getProductsByType = async (Type) => {
+    return await Product.find({Type});
+};
+
 module.exports = {
     getProduct_Id,
     getProductById,
@@ -101,5 +110,7 @@ module.exports = {
     getAllProduct,
     getProductsType,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    getProductByName,
+    getProductsByType,
 }
