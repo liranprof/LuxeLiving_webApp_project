@@ -186,19 +186,6 @@ async function loadStaticContent(path) {
     }
 }
 
-async function loadStaticContent(path) {
-    const cardsDiv = document.getElementById('div_sidebar_item_list');
-    try {
-        const res = await fetch(path);
-        if (!res.ok) throw new Error('Network response was not ok');
-        const html = await res.text();
-        cardsDiv.innerHTML = html; 
-    } catch (error) {
-        console.error('Error loading content:', error);
-        cardsDiv.innerHTML = 'Error loading content';
-    }
-}
-
 function restoreOriginalContent() {
     const cardsDiv = document.getElementById('div_sidebar_item_list');
     cardsDiv.innerHTML = originalContent; 
