@@ -1,0 +1,161 @@
+<!-- TODO: check if new user is not in DB save -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="./css/reg_style.css">
+    <link rel="icon" type="image/x-icon" href="./img/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>Registration page </title>
+
+        <script>
+            function togglePassword(id) {
+                var input = document.getElementById(id);
+                if (input.type === "password") {
+                    input.type = "text";
+                } else {
+                    input.type = "password";
+                }
+            }
+    
+            document.getElementById('form_registration').addEventListener('submit', function (event) {
+                const email = document.getElementById('email').value;
+                const confirmEmail = document.getElementById('confirmEmail').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+    
+                if (email !== confirmEmail) {
+                    alert('Email addresses do not match.');
+                    event.preventDefault();
+                    return false;
+                }
+    
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match.');
+                    event.preventDefault();
+                    return false;
+                }
+    
+                return true;
+                // FIXME: add massage to user 
+            });
+    
+            function resetForm() {
+                document.getElementById('form_registration').reset();
+            }
+        </script>
+</head>
+
+<body id="body">
+    <div id="div_header">
+
+        <div id="div_header_img">
+            <img id="img_header" src="./img/header_reg.png" alt="">
+        </div>
+
+        <div id="div_header_items">
+
+            <div id="div_logo_slogan">
+                <img id="img_logo" src="./img/logo.png" alt=""></img>
+                <img id="img_slogan" src="./img/slogan.png" alt=""></img>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="div_menu">
+        <a id="a_menu_title">Menu</a>
+        <div id="div_sidebar_menu">
+            <a class="a_menu">Products list</a>
+            <% if (typeof Products_Types==='undefined' || Products_Types.length===0) { %>
+                <p>No Products_Types available.</p>
+                <% } else { %>
+                    <%for(let i=0; i < Products_Types.length; i++) { %>
+            <a class="a_menu"><%= Products_Types[i] %></a>
+            <% } %>
+            <% } %>
+            <!-- user menu -->
+            <% /* <a class="a_menu">Modify carts</a> */ %>
+            <% /* <a class="a_menu">User details</a> */ %>
+            
+            <!-- admin menu -->
+            <% /* <a class="a_menu">Modify products</a> */ %>
+            <% /* <a class="a_menu">Modify carts</a> */ %>
+            <% /* <a class="a_menu">Modify clients</a> */ %>
+            <% /* <a class="a_menu">Modify suppliers</a> */ %>
+            <% /* <a class="a_menu">Modify store location</a> */ %>
+            <% /* <a class="a_menu">Financial</a> */ %>
+            <% /* <a class="a_menu">Facebook</a> */ %>
+            <% /* <a class="a_menu">Admin details</a> */ %>
+           
+            <!-- non-user menu -->
+            <a class="a_menu">About</a>
+            <a class="a_menu">Terms</a>
+         </div>
+    </div>
+    
+    <div id="div_item_list">
+        <!-- <a id="a_item_list_title">Registration Form</a> -->
+        <div id="div_sidebar_item_list">
+
+            <div id="div_form">
+                <h2>Registration Form</h2>
+                <form id="form_registration">
+                    <div class="form_group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form_group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    <div class="form_group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required
+                            pattern="^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$|^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]{2}\.[a-zA-Z]{2}$"
+                            title="Email must be in the format xxxx@xxxxx.xxx or xxxx@xxxxx.xx.xx">
+                    </div>
+                    <div class="form_group">
+                        <label for="confirmEmail">Retype Email</label>
+                        <input type="email" id="confirmEmail" name="confirmEmail" required
+                            pattern="^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$|^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]{2}\.[a-zA-Z]{2}$"
+                            title="Email must be in the format xxxx@xxxxx.xxx or xxxx@xxxxx.xx.xx">
+                    </div>
+                    <div class="form_group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required
+                            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,10}$"
+                            title="Must contain at least 8-10 characters, including letters and numbers">
+                        <span class="span_toggle_password" onclick="togglePassword('password')">&#128065;</span>
+                    </div>
+                    <div class="form_group">
+                        <label for="confirmPassword">Retype Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required
+                            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,10}$"
+                            title="Must contain at least 8-10 characters, including letters and numbers">
+                        <span class="span_toggle_password" onclick="togglePassword('confirmPassword')">&#128065;</span>
+                    </div>
+                    <div class="div_buttons">
+                        <button type="button" class="btn btn-cancel">Cancel</button>
+                        <button type="button" class="btn btn-refresh" onclick="resetForm()">Refresh</button>
+                        <button type="submit" class="btn btn-next">Next</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

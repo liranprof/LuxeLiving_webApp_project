@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="./css/about_style.css">
+    <link rel="icon" type="image/x-icon" href="./img/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>Welcome to Homeware Haven </title>
+
+    <script>
+        function initMap() {
+            const locations = [
+
+                { lat: 31.970448, lng: 34.772553, title: 'College of Management Academic Studies \n Elie Wiesel St 2, Rishon LeTsiyon ' },
+                { lat: 31.949753, lng: 34.803451, title: 'Azrielli Rishonim \n Sderot Nim 2, Rishon LeTsiyon' },
+                { lat: 31.990346, lng: 34.774560, title: 'GoldMall \n David Saharov St 21, Rishon LeTsiyon' }
+            ];
+
+            const mapOptions = {
+                zoom: 13,
+                center: locations[0]
+            };
+
+            const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            // Loop through locations and place markers
+            locations.forEach((location) => {
+                const marker = new google.maps.Marker({
+                    position: { lat: location.lat, lng: location.lng },
+                    map: map,
+                    title: location.title
+                });
+            });
+        }
+    </script>
+</head>
+
+<body id="body">
+    <div id="div_header">
+
+        <div id="div_header_img">
+            <img id="img_header" src="./img/header_about.png" alt="">
+        </div>
+
+        <div id="div_header_items">
+
+            <div id="div_logo_slogan">
+                <img id="img_logo" src="./img/logo.png" alt=""></img>
+                <img id="img_slogan" src="./img/slogan.png" alt=""></img>
+            </div>
+
+            <div id="div_email_password">
+                <div id="buttons_container">
+                    <i id="i_Enter_Email">Enter Email:</i>
+                    <input id="input_Email" type="email" placeholder="user@server.com">
+                    <i id="i_Enter_password">Enter password:</i>
+                    <input id="input_password" type="password" placeholder="password">
+                    <button id="btn_login" title="Login">
+                        <img id="img_login" src="./img/login.svg" alt="">
+                    </button>
+                </div>
+            </div>
+            <div id="div_reg_search">
+                <a id="hyper_reg" href="regstration">Registration</a>
+                <div id="div_advanced_search">
+                    <div id="buttons_container">
+                        <div id="div_drop_down_advanced_search">
+                            <button class="btn_div_floating" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img class="img_div_floating" src="./img/advanced-search.svg" alt="">
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><i class="dropdown-item" href="#">Product: Name</i></li>
+                                <li><i class="dropdown-item" href="#">Product: Price range</i></li>
+                                <li><i class="dropdown-item" href="#">Product: Type</i></li>
+                                <li><i class="dropdown-item" href="#">Product: Brand</i></li>
+                                <li><i class="dropdown-item" href="#">Product: Supplier</i></li>
+                                <hr>
+                                <% /*<li><i class="dropdown-item" href="#">Supplier: Name</i></li>*/ %>
+                                <% /*<hr>*/ %>
+                                <% /*<li><i class="dropdown-item" href="#">Client:Name</i></li>*/ %>
+                                <% /*<li><i class="dropdown-item" href="#">Client:Last_name</i></li>*/ %>
+                                <% /*<hr>*/ %>
+                                <% /*<li><i class="dropdown-item" href="#">Cart: ID</i></li>*/ %>
+                                <% /*<li><i class="dropdown-item" href="#">Cart: Purchased_date</i></li>*/ %>   
+                            </ul>
+                        </div>
+                        <input id="input_search" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn_div_floating" type="button" aria-expanded="false">
+                            <img class="img_div_floating" src="./img/search.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="div_menu">
+        <a id="a_menu_title">Menu</a>
+        <div id="div_sidebar_menu">
+            <a class="a_menu">Products list</a>
+            <% if (typeof Products_Types==='undefined' || Products_Types.length===0) { %>
+                <p>No Products_Types available.</p>
+                <% } else { %>
+                    <%for(let i=0; i < Products_Types.length; i++) { %>
+            <a class="a_menu"><%= Products_Types[i] %></a>
+            <% } %>
+            <% } %>
+            <!-- user menu -->
+            <% /* <a class="a_menu">Modify carts</a> */ %>
+            <% /* <a class="a_menu">User details</a> */ %>
+            
+            <!-- admin menu -->
+            <% /* <a class="a_menu">Modify products</a> */ %>
+            <% /* <a class="a_menu">Modify carts</a> */ %>
+            <% /* <a class="a_menu">Modify clients</a> */ %>
+            <% /* <a class="a_menu">Modify suppliers</a> */ %>
+            <% /* <a class="a_menu">Modify store location</a> */ %>
+            <% /* <a class="a_menu">Financial</a> */ %>
+            <% /* <a class="a_menu">Facebook</a> */ %>
+            <% /* <a class="a_menu">Admin details</a> */ %>
+           
+            <!-- non-user menu -->
+            <a class="a_menu">About</a>
+            <a class="a_menu">Terms</a>
+         </div>
+    </div>
+
+    <div id="div_item_list">
+        <a id="a_item_list_title">About</a>
+        <div id="div_sidebar_item_list">
+            <div id="div_about">
+                <div class="heading">
+                    Welcome to Our Kitchen Homeware Store
+                </div>
+                <div class="content">
+                    Your ultimate destination for all things
+                    <span class="highlight">culinary and home dining</span>
+                    <span>! We pride ourselves on offering a diverse range of
+                        high-quality kitchen essentials that cater to both amateur cooks and seasoned
+                        chefs. From sleek, modern cookware and innovative kitchen gadgets to elegant
+                        tableware and stylish storage solutions, our carefully curated selection is
+                        designed to enhance your cooking experience and elevate your home's aesthetic.
+                        Whether you're whipping up a gourmet meal or simply looking to organize your
+                        kitchen, our store provides everything you need to create a functional and
+                        beautiful kitchen space.
+                    </span>
+                </div>
+
+                <div id="div_locations">
+
+                    <div id="div_locations_header">We are located in several central places in Rishon LeTsiyon <br>
+                        <span class="highlight">and intend to go outside its borders</span>
+                    </div>
+
+                    <span class="span_loc">College of Management Academic Studies</span>
+                    <span class="span_loc_highlight">location:</span>
+                    <i> Elie Wiesel St 2, Rishon LeTsiyon </i><br>
+
+                    <span class="span_loc">Azrielli Rishonim</span>
+                    <span class="span_loc_highlight">location:</span>
+                    <i> Elie Wiesel St 2, Rishon LeTsiyon </i><br>
+
+                    <span class="span_loc">Gold Mall</span>
+                    <span class="span_loc_highlight">location:</span>
+                    <i> David Saharov St 21, Rishon LeTsiyon </i><br>
+
+                </div>
+            </div>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <script src="../app.js"></script>
+    <% if (typeof Google_Map_API_KEY==='undefined') { %>
+        <p>No Google_Map_API_KEY available.</p>
+        <% } else { %>
+   <script src="https://maps.googleapis.com/maps/api/js?key=<%= Google_Map_API_KEY %>=&callback=initMap"
+        async defer></script>
+        <% } %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

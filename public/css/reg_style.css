@@ -1,0 +1,465 @@
+#body {
+    background-color: rgb(50, 120, 205);
+    padding: 0;
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    height: 100vw;
+    min-height: 100vw;
+    max-height: 100vw;
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+    position: fixed;
+}
+
+#div_header {
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 0;
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+    z-index: 1;
+    height: 31.9vh;
+}
+
+#div_header #div_header_img {
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+    height: 31.9vh;
+    /* bring to background */
+    position: absolute;
+    z-index: -1;
+}
+
+#div_header #div_header_img #img_header {
+    height: 18.12vw;
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+}
+
+#div_header #div_header_items {
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+    height: 100%;
+    text-align: center;
+    /* bring to front */
+    position: absolute;
+    z-index: 1;
+}
+
+#div_header #div_header_items #div_logo_slogan {
+    position: fixed;
+    height: 22.5vh;
+    width: 20vw;
+    justify-content: center;
+   display: flex;
+}
+
+#div_header #div_header_items #div_logo_slogan #img_logo {
+    position: fixed;
+    width: 11vw;
+    height: 19vh;
+    margin-top: 0.6vh;
+}
+
+#div_header #div_header_items #div_logo_slogan #img_slogan {
+    position: fixed;
+    width: 19vw;
+    height: 1vw;
+    margin-top: 20.5vh;  
+}
+
+#div_header #div_header_items #div_reg_search {
+    width: 23.6vw;
+    height: 14vw;
+    float: right;
+}
+
+#div_header #div_header_items #div_email_password {
+    position: fixed;
+    margin-top: 8.4vh;
+    margin-left: 20vw;
+    width: 61vw;
+    height: 5.7vh;
+    padding: 0.1vw;
+}
+
+#div_header #div_header_items #div_email_password #buttons_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2vw;
+    width: 61vw;
+    height: 5.7vh;
+     align-items: center;
+}
+
+#div_header #div_header_items #div_email_password #i_Enter_Email {
+    box-sizing: border-box;
+    padding: 0.5vw 0.5vw;
+    font-size: 1.5vw;
+    color: rgb(0, 0, 0);
+    border: none;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    align-content: center;
+}
+
+#div_header #div_header_items #div_email_password #input_Email {
+    border-radius: 1vw;
+    width: 18vw;
+    height: 3vw;
+    margin: 0;
+    padding: 1vw;
+    border: 0.1vw solid #000;
+    font-size: 1.5vw;
+    box-sizing: border-box;
+}
+
+#div_header #div_header_items #div_email_password #i_Enter_password {
+    box-sizing: border-box;
+    padding: 0.5vw 0.5vw;
+    font-size: 1.5vw;
+    color: rgb(0, 0, 0);
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#div_header #div_header_items #div_email_password #input_password {
+    border-radius: 1vw;
+    width: 18vw;
+    height: 3vw;
+    margin: 0;
+    padding: 1vw;
+    border: 0.1vw solid #000;
+    font-size: 1.5vw;
+    box-sizing: border-box;
+}
+
+#div_header #div_header_items #div_email_password #buttons_container #btn_login {
+
+    padding: 0.5vw 0.5vw;
+    font-size: 1.3vw;
+    color: white;
+    background-color: rgb(220, 215, 215);
+    border: none;
+    border-radius: 1vw;
+    transition: background-color 0.3s ease;
+}
+
+#div_header #div_header_items #div_email_password #buttons_container #btn_login:hover {
+    cursor: pointer;
+    background-color: rgba(85, 85, 85, 0.688);
+}
+
+#div_header #div_header_items #div_email_password #buttons_container #btn_login:active {
+    background-color: rgba(85, 85, 85, 0.952);
+}
+
+#div_header #div_header_items #div_email_password #buttons_container #btn_login #img_login {
+    width: 1.7vw;
+    height: 1.7vw;
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search {
+    position: absolute;
+    width: 23.95vw;
+    height: 3.2vw;
+    padding: 0.1vw;
+    margin-top: 5vw;
+    align-items: center;
+    align-content: center;
+    z-index: 1000;
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search #buttons_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2vw;
+    width: 23.95vw;
+    height: 3vw;
+    align-content: center;
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search #buttons_container #div_drop_down_advanced_search {
+    height: 3vw;
+    width: 2.5vw;
+    min-height: 3vw;
+    max-height: 3vw;
+    min-width: 2.5vw;
+    max-width: 2.5vw;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search #buttons_container #div_drop_down_advanced_search .btn_div_floating {
+    box-sizing: border-box;
+    display: flex;
+    padding: 0.5vw 0.5vw;
+    font-size: 0.5vw;
+    color: white;
+    background-color: rgb(220, 215, 215);
+    border: none;
+    border-radius: 1vw;
+    transition: background-color 0.3s ease;
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search #buttons_container #div_drop_down_advanced_search .btn_div_floating:hover {
+    cursor: pointer;
+    background-color: rgba(85, 85, 85, 0.688);
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search #buttons_container #div_drop_down_advanced_search .btn_div_floating:active {
+    background-color: rgba(85, 85, 85, 0.952);
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search #buttons_container #div_drop_down_advanced_search .btn_div_floating .img_div_floating {
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search #buttons_container .btn_div_floating {
+    box-sizing: border-box;
+    display: flex;
+    padding: 0.5vw 0.5vw;
+    font-size: 0.5vw;
+    color: white;
+    background-color: rgb(220, 215, 215);
+    border: none;
+    border-radius: 1vw;
+    transition: background-color 0.3s ease;
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search #buttons_container .btn_div_floating:hover {
+    cursor: pointer;
+    background-color: rgba(85, 85, 85, 0.688);
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search #buttons_container .btn_div_floating:active {
+    background-color: rgba(85, 85, 85, 0.952);
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search #buttons_container .btn_div_floating .img_div_floating {
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
+#div_header #div_header_items #div_reg_search #div_advanced_search #buttons_container #input_search {
+    border-radius: 1vw;
+    width: 18vw;
+    height: 3vw;
+    margin: 0;
+    padding: 1vw;
+    border: 0.1vw solid #000;
+    font-size: 1.5vw;
+    box-sizing: border-box;
+}
+
+#div_header #div_header_items #div_reg_search #hyper_reg {
+    box-sizing: border-box;
+    display: flex;
+    margin-top: 2vw;
+    justify-content: center;
+    padding: 0.5vw 0.5vw;
+    font-size: 1.5vw;
+    color: rgb(0, 0, 0);
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#div_menu {
+    background-color: rgba(0, 0, 0, 0.24);
+    position: fixed;
+    width: 18vw;
+    height: 39.6vw;
+    text-align: center;
+    box-shadow: 0 0 3vw rgba(0, 0, 0, 0.5);
+    display: inline-flex;
+}
+
+#div_menu #a_menu_title {
+    position: fixed;
+    font-size: 1.3vw;
+    width: 17.8vw;
+    padding: auto;
+    height: 5.5vh;
+    background-color: rgb(225, 110, 110);
+    align-content: center;
+    color: white;
+
+}
+
+#div_menu #div_sidebar_menu {
+    margin-top: 5.5vh;
+    background-color: #f1f1f1;
+    font-size: 1.3vw;
+    width: 17.8vw;
+    height: 62vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+#div_menu #div_sidebar_menu::-webkit-scrollbar {
+    width: 1.2vw;
+}
+
+#div_menu #div_sidebar_menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 1.5vw;
+}
+
+#div_menu #div_sidebar_menu::-webkit-scrollbar-thumb {
+    background: #0f9d58;
+    border-radius: 1.5vw;
+}
+
+#div_menu #div_sidebar_menu::-webkit-scrollbar-thumb:hover {
+    background: #0b8043;
+}
+
+#div_menu #div_sidebar_menu .a_menu {
+    display: block;
+    color: black;
+    padding: 0.8vw;
+    text-decoration: none;
+}
+
+#div_menu #div_sidebar_menu .a_menu:hover {
+    cursor: pointer;
+    background-color: rgba(255, 153, 0, 0.601);
+    color: white;
+}
+
+#div_item_list {
+    background-color: rgba(0, 0, 0, 0.24);
+    margin-left: 23vw;
+    width: 59.6vw;
+    height: 39.6vw;
+    box-shadow: 0 0 3vw rgba(0, 0, 0, 0.5);
+    display: flex;
+}
+
+#div_item_list #a_item_list_title {
+    position: fixed;
+    margin-left: 0.09vw;
+    font-size: 1.3vw;
+    width: 59.5vw;
+    height: 5.5vh;
+    background-color: rgb(36, 39, 221);
+    align-content: center;
+    text-align: center;
+    color: white;
+}
+
+
+#div_item_list #div_sidebar_item_list {
+    overflow-x: auto;
+    overflow-y: auto;
+    margin-left: 0.09vw;
+    margin-top: 5.5vh;
+    width: 59.6vw;
+    height: 62vh;
+    text-align: center;
+    background-color: #f1f1f1;
+    padding: 0.7vw;
+    font-family: Arial, sans-serif;
+}
+
+#div_item_list #div_sidebar_item_list::-webkit-scrollbar {
+    width: 1.2vw;
+}
+
+#div_item_list #div_sidebar_item_list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 1.5vw;
+}
+
+#div_item_list #div_sidebar_item_list::-webkit-scrollbar-thumb {
+    background: #0f9d58;
+    border-radius: 1.5vw;
+}
+
+#div_item_list #div_sidebar_item_list::-webkit-scrollbar-thumb:hover {
+    background: #0b8043;
+}
+#div_item_list #div_sidebar_item_list #div_form {
+    max-width: 58.9vw;
+    margin: 0 auto;
+    padding: 2vw;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-zoom:100%;
+}
+
+#div_item_list #div_sidebar_item_list #div_form h2 {
+    text-align: center;
+    color: #d35400;
+    margin-bottom: 2vh;
+}
+
+#div_item_list #div_sidebar_item_list #div_form #form_registration .form_group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+#div_item_list #div_sidebar_item_list #div_form #form_registration .form_group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#div_item_list #div_sidebar_item_list #div_form #form_registration .form_group input[type="text"],
+#div_item_list #div_sidebar_item_list #div_form #form_registration .form_group input[type="email"],
+#div_item_list #div_sidebar_item_list #div_form #form_registration .form_group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#div_item_list #div_sidebar_item_list #div_form #form_registration .form_group .span_toggle_password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#div_item_list #div_sidebar_item_list #div_form #form_registration .div_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#div_item_list #div_sidebar_item_list #div_form #form_registration .div_buttons .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+}
+
+#div_item_list #div_sidebar_item_list #div_form #form_registration .div_buttons .btn:hover {
+    opacity: 0.9;
+}
+
+#div_item_list #div_sidebar_item_list #div_form #form_registration .div_buttons .btn-next {
+    background-color: #28a745;
+}
+
+#div_item_list #div_sidebar_item_list #div_form #form_registration .div_buttons .btn-cancel {
+    background-color: #dc3545;
+}
+
+#div_item_list #div_sidebar_item_list #div_form #form_registration .div_buttons .btn-refresh {
+    background-color: #17a2b8;
+}

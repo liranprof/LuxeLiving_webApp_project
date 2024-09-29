@@ -1,0 +1,367 @@
+
+-----------------------paragraph_1(full guide)------------------------------
+-----------------------paragraph_2(data flows in Express app,Mongoose app)------------------------------
+-----------------------paragraph_3(routes in Express)------------------------------
+-----------------------paragraph_4(controllers in Express)------------------------------   
+-----------------------paragraph_5(process.env.MONGODB_URI )------------------------------
+-----------------------paragraph_6(start+check your Express.js server with Mongoose using cmd)------------------------------
+-----------------------paragraph_7(position by layout requirements)------------------------------
+
+-----------------------paragraph_1(full guide)------------------------------
+
+1. ** Project Setup **:
+- Create a new project folder.
+- Inside project folder execute(cmd) "npm init" to generate a `package.json` file.
+- Install necessary dependencies: "npm install express mongoose"(check dotenv)
+   dotenv = dotenv simplifies managing environment variables and ensures,
+   that your configuration remains separate from your codebase. 
+   It follows the principles of The Twelve - Factor App methodolog.
+- Set up your MongoDB database in index.js    
+    const mongoose = require('mongoose');     
+
+- Set up Express in index.js
+  const express = require('express');
+  const app = express();
+- Configure middleware, routes(paragraph 3), and controllers(paragraph 3)
+- Connect to the database In index.js
+  const PORT = process.env.PORT || 3000;
+  mongoose.connect(process.env.MONGODB_URI, (paragraph 5)
+{ useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {app.listen(PORT, () => {console.log(`Server started on port ${PORT}`);});})
+  .catch((err) => console.error('Error connecting to MongoDB:', err));
+
+- Start the Server (paragraph 6)
+- Test Your Endpoints //Use tools like Postman or your browser to test your API endpoints.
+2. project folder /
+  ├── app.js          # 10. Entry point
+  |
+  ├── routes /        # 5. Route handlers // for different endpoints // Use Express Router to organize routes
+  │   ├── cart.js     # cart - related routes
+  │   ├── client.js   
+  │   ├── password.js   
+  │   ├── products.js   
+  │   └── supplier.js
+  |
+  ├── models /        # 4. Mongoose models // Use Mongoose schema to define fields, types, and validation rules
+  │   ├── cart.js     # cart model   //Define data models
+  │   ├── client.js   
+  │   ├── password.js   
+  │   ├── products.js   
+  │   └── supplier.js
+  |
+  ├── controllers /   # 6. Controllers(business logic)// Handle CRUD operations (Create, Read, Update, Delete)
+  │   ├── cart.js     #cart business logic implementation
+  │   ├── client.js   
+  │   ├── password.js   
+  │   ├── products.js   
+  │   └── supplier.js
+  |
+  ├── middleware /-X  # 7. Custom middleware//Use middleware for tasks like authentication, error handling, and logging
+  │   └── auth.js-X   # Authentication middleware//custom middleware functions
+  |
+  ├── views /         # 8. Views //if using server-side rendering
+  │   ├── about.ejs              //create views (HTML templates)//templating engine like EJS or Pug
+  │   ├── cart.js 
+  │   ├── cart.js 
+  │   ├── cart.js 
+  │   ├── cart.js 
+  │   ├── cart.js 
+  │   ├── cart.js 
+  |   └── about.ejs
+  ├── public /        # 9.Static files(CSS, images, etc.)//the visual html+js+css
+  │   ├── prod_img /
+  │   ├── img /
+  │   ├── css/
+  │   ├── test.html
+  ├── config /
+  └── .env            # 3. Environment variables//DB Configuration
+                                               //store database connection string and other sensitive information.
+
+
+-----------------------paragraph_2(data flows in Express app,Mongoose app)------------------------------
+
+1. **Client Request**:public/A.html+A.css for visual part A.js for functionality
+  - A client (e.g., a web browser or a mobile app) sends an HTTP request to your Express.js server.
+  - The request includes information such as the HTTP method (GET, POST, etc.) and the requested URL (endpoint).
+
+2. **Express Router**:
+  - Express uses a router to handle incoming requests.
+  - The router matches the requested URL to the appropriate route handler based on the HTTP method and path.
+
+3. **Route Handlers**: routes/
+  - Route handlers (defined using `app.get()`, `app.post()`, etc.) execute specific logic for each route.
+  - For example:
+    - A `GET /dogs` route handler retrieves all dogs from the database.
+    - A `POST /dogs` route handler creates a new dog record in the database.
+
+4. **Controller (Business Logic)**:controllers /
+  - Inside the route handler, you typically call a controller function.
+  - The controller contains the business logic for handling the request.
+  - For example:
+    - The `productController` might handle CRUD operations for products (e.g., fetching, creating, updating, deleting).
+
+5. **Mongoose Models**: models /
+  - Mongoose models (defined using schemas) represent your data structures.
+  - Each model corresponds to a collection in your MongoDB database.
+  - For example:
+    - The `Dog` model represents the dogs collection.
+
+6. **Database Interaction**:
+  - When you query the database (e.g., `Dog.find()`), Mongoose translates the query into MongoDB commands.
+  - Mongoose handles connecting to the database, executing queries, and returning results.
+
+7. **Database Response**:
+  - The database responds with data (e.g., a list of dogs or a single dog).
+  - Mongoose converts the raw data into JavaScript objects (documents).
+
+8. **Response to Client**: routes/
+  - The route handler receives the data from the controller or directly from the database.
+  - It constructs an HTTP response (e.g., JSON data) and sends it back to the client.
+
+9. **Client Receives Response**: 
+  - The client (browser, mobile app, etc.) receives the response.
+  - If it's a web page, the client can render the data or use it for further interactions.
+
+In summary, data flows from the 
+client request => Express routes => controllers => Mongoose models =>database interactions => client as an HTTP response. 
+Each layer plays a specific role in handling and processing the data.
+
+Express.js Dependencies:
+To use Express.js, you’ll need to require the express module. 
+This module provides the core functionality for 
+building web applications and handling routes.
+const express = require('express');
+
+Mongoose for MongoDB Integration:
+Mongoose is an Object Data Modeling (ODM) library for MongoDB. It allows you to work 
+with MongoDB in a more structured way by defining schemas and models.
+To use Mongoose, require the mongoose module.
+
+.modules/each_module.js=>(schema Object) const mongoose = require('mongoose');
+
+Your Custom Models:
+If you’ve defined custom models (schemas) 
+for your application (e.g., a Dog model), you’ll need to require those as well.
+Example (assuming you have a Dog model in a separate file)
+
+
+
+-----------------------paragraph_3(routes in Express)------------------------------
+
+1. **Create a Separate Routes File**:
+  - Create routes/routes.js where you'll define your routes.
+  - In this file, 
+  - Inside the function, define your routes using the `app` object.
+  - Example (`routes.js`):
+    ```javascript
+    // routes.js
+    module.exports = function (app) { export a function that takes the `app` object as an argument.
+        app.get('/', (req, res) => {//define your routes using the `app` object.
+            res.send('Welcome to my website!');
+        });
+
+        app.get('/about', (req, res) => {
+            res.send('About page');
+        });
+
+        // Add more routes as needed
+    };
+    ```
+
+2. **Require and Mount the Routes**:
+  - In your main application file (e.g., `index.js`), require the `routes.js` file and pass the `app` object to it.
+  - Example (`index.js`):
+    ```javascript
+    const express = require('express');
+    const app = express();
+
+    // Other middleware and configuration
+
+    // Mount the routes
+    require('./routes')(app);
+
+    // Start the server
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Server listening on port ${PORT}`);
+    });
+    ```
+
+3. **Folder Structure**:
+  - Organize your project files into separate directories (e.g., `routes`, `controllers`, `models`, etc.).
+  - For example:
+    ```
+    my-express-app/
+    ├── index.js
+    ├── routes/
+    │   └── routes.js
+    ├── controllers/
+    │   └── ...
+    ├── models/
+    │   └── ...
+    └── ...
+    ```
+
+4. **Controller Logic (Optional)**:
+  - If your routes involve more complex logic (such as database queries), create separate controller files.
+  - For example, you can have a `productsController.js` for handling product-related routes.
+
+5. **Error Handling Routes (Optional)**:
+  - Define error-handling middleware to handle errors in routes.
+  - For example:
+    ```javascript
+    app.use((err, req, res, next) => {
+        console.error(err.stack);
+        res.status(500).send('Something went wrong!');
+    });
+    
+
+-----------------------paragraph_4(controllers in Express)------------------------------
+
+1. **Create Separate Controller Files**:
+  - Create a new folder (e.g., `controllers`) in your project directory.
+  - Inside this folder, create separate files for each controller (e.g., `productController.js`, `userController.js`, etc.).
+  - Each controller file will handle specific logic related to a particular route or resource.
+
+2. **Define Controller Functions**:
+  - In each controller file, define functions that correspond to different actions (e.g., handling GET requests, POST requests, etc.).
+  - Example (`productController.js`):
+    ```javascript
+    // productController.js
+    exports.getAllProducts = (req, res) => {
+        // Logic to fetch all products from the database
+        // Send the products as an HTTP response
+        res.send('List of all products');
+    };
+
+    exports.getProductById = (req, res) => {
+        // Logic to fetch a specific product by ID
+        // Send the product details as an HTTP response
+        res.send('Product details');
+    };
+    ```
+
+3. **Mount Controllers in Routes**:
+  - In your route files (e.g., `routes.js`), require the relevant controller functions.
+  - Use these functions as route handlers.
+  - Example (`routes.js`):
+    ```javascript
+    const express = require('express');
+    const router = express.Router();
+    const productController = require('./controllers/productController');
+
+    // Define routes
+    router.get('/products', productController.getAllProducts);
+    router.get('/products/:id', productController.getProductById);
+
+    module.exports = router;
+    ```
+
+4. **Mount Routes in Your Main Application**:
+  - In your main application file (e.g., `index.js`), mount the routes.
+  - Example (`index.js`):
+    ```javascript
+    const express = require('express');
+    const app = express();
+    const routes = require('./routes');
+
+    // Other middleware and configuration
+
+    // Mount the routes
+    app.use('/', routes);
+
+    // Start the server
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Server listening on port ${PORT}`);
+    });
+    ```
+
+5. **Error Handling (Optional)**:
+  - You can also define error-handling middleware in your controllers or a separate error-handling middleware.
+  - For example:
+    ```javascript
+    exports.handleError = (err, req, res, next) => {
+        console.error(err.stack);
+        res.status(500).send('Something went wrong!');
+    };
+
+
+-----------------------paragraph_5(process.env.MONGODB_URI )------------------------------
+
+
+The `process.env.MONGODB_URI` is an environment variable that holds the connection string (URI) for your MongoDB database.
+
+1. **Environment Variables (`process.env`)**:
+  - In Node.js, `process.env` is an object that contains all environment variables available to your application.
+  - Environment variables are set outside your application (e.g., in your system environment or a configuration file).
+
+2. **`MONGODB_URI`**:
+  - `MONGODB_URI` is a conventionally used environment variable name for storing the MongoDB connection string.
+  - The connection string includes information about the MongoDB server (host, port), authentication credentials, and the specific database you want to connect to.
+
+3. **Setting the Environment Variable**:
+  - You can set `MONGODB_URI` in various ways:
+    - In your `.env` file (if you're using **dotenv**).
+    - As an environment variable on your server (e.g., when deploying to a cloud service like Heroku).
+    - In your local development environment (e.g., by exporting it in your terminal).
+
+4. **Connecting to MongoDB**:
+  - When your application starts, it uses the value of `MONGODB_URI` to establish a connection to your MongoDB database.
+  - The `mongoose.connect()` method connects to the specified MongoDB instance using the provided URI.
+  - If the connection is successful, your application can interact with the database.
+
+In summary, `process.env.MONGODB_URI` holds the connection string for your MongoDB database, allowing your Express.js application to communicate with MongoDB
+
+
+-----------------------paragraph_6(start+check your Express.js server with Mongoose using cmd)------------------------------
+
+
+1. **Start the Server**:
+  - Open your command prompt (CMD) or terminal.
+  - Navigate to the root directory of your Express.js project (where your `app.js` or `server.js` file is located).
+  - Run the following command to start your server:
+    ```bash
+    node app.js
+    ```
+    Replace `app.js` with the actual name of your main server file.
+
+2. **Check if the Server Is Running**:
+  - If there are no errors, your server should be running and listening on the specified port (usually 3000 by default).
+  - You'll see a message like "Server started on port 3000" in the console.
+
+3. **Access Your Application**:
+  - Open a web browser.
+  - Visit `http://localhost:3000` (or the port you specified) to see if your application responds.
+  - If you see your application's response (e.g., "Welcome to my website!"), your server is online.
+
+4. **Check MongoDB Connection**:
+  - If your application connects to MongoDB using Mongoose, ensure that your MongoDB server is also running.
+  - If your MongoDB connection is successful, your application can interact with the database.
+  - You can check the MongoDB connection state using `mongoose.connection.readyState`:
+    - `0`: Disconnected
+    - `1`: Connected
+    - `2`: Connecting
+    - `3`: Disconnecting
+
+-----------------------paragraph_7(position by layout requirements)------------------------------
+
+position:static;
+HTML elements//default//TBLR no effect//normal flow of the body
+ 
+position:relative;
+HTML elements//relative to its normal position
+//TBLR effect=>adjusts its position away from its normal flow
+//fill full row of page
+
+position:fixed;
+HTML elements//fixed to the page//stays its position
+//must TBLR used to position//relative to visible area of body
+// not fill full row of page
+
+position:absolute;
+HTML elements//relative to the nearest positioned ancestor/body
+//normal flow of the body=>overlap//no ancestors =>moves on scroll
+
+position:sticky;
+HTML elements//like relative+fixed but its positioned by scroll //
